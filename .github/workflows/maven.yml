@@ -31,8 +31,8 @@ jobs:
       - name: Build with Maven
         run: mvn -B deploy
         env:
-          SONATYPE_USERNAME: ${{ secrets.OSSRH_USER }}
-          SONATYPE_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USER }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           GPG_SECRET_KEY_PASSPHRASE: ${{ secrets.GPG_SECRET_KEY_PASSPHRASE }}
       - name: Make sure not changed (test case generates code, but should not change it)
         run: git diff --exit-code
