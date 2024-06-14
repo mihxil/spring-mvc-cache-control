@@ -1,5 +1,0 @@
-rootProject.name = 'spring-mvc-cache-control'
-
-include 'spring-mvc-cache-control'
-include 'spring-mvc-cache-control-demo'
-

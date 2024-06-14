@@ -1,11 +1,8 @@
 package net.rossillo.spring.web.mvc;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.method.HandlerMethod;
@@ -16,6 +13,7 @@ import org.springframework.web.method.HandlerMethod;
  * @author Scott Rossillo
  *
  */
+@SuppressWarnings("DataFlowIssue")
 public final class CacheControlHandlerInterceptorTest {
 	
 	private CacheControlHandlerInterceptor interceptor;
@@ -26,7 +24,7 @@ public final class CacheControlHandlerInterceptorTest {
 	
 	private final CacheControlAnnotatedTestController controller = new CacheControlAnnotatedTestController();
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		interceptor = new CacheControlHandlerInterceptor();
 		request = new MockHttpServletRequest();
