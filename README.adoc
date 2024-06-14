@@ -13,6 +13,7 @@ In 2024 I revived my fork, and
 - updated spring
 - updated servlet-api
 - dropped gradle (I'm sorry, It didn't work)
+- added github actions for the build
 - published it to maven central with new coordinates
 
 == Usage

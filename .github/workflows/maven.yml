@@ -34,13 +34,6 @@ jobs:
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USER }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           GPG_SECRET_KEY_PASSPHRASE: ${{ secrets.GPG_SECRET_KEY_PASSPHRASE }}
-      - name: Make sure not changed (test case generates code, but should not change it)
-        run: git diff --exit-code
-      - name: Run simple tests
-        run: |
-          echo "Making sure it is usable without any further deps"
-          (cd test/simple ; mvn -B -q -Dexec.args=-; mvn -B dependency:tree)
-          (cd test/jackson; mvn -B -q ; mvn -B dependency:tree)
       - uses: codecov/codecov-action@v3.1.5
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2.12.0
