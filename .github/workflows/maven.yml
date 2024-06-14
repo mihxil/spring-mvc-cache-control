@@ -1,0 +1,50 @@
+---
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write # to publish test results?
+    env:
+      MAVEN_OPTS: -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: 'temurin'
+          cache: 'maven'
+          server-id: ossrh
+          server-username: SONATYPE_USERNAME
+          server-password: SONATYPE_PASSWORD
+          gpg-private-key: ${{ secrets.GPG_SECRET_KEY }}
+          gpg-passphrase: GPG_SECRET_KEY_PASSPHRASE  
+      - name: Build with Maven
+        run: mvn -B deploy
+        env:
+          SONATYPE_USERNAME: ${{ secrets.OSSRH_USER }}
+          SONATYPE_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GPG_SECRET_KEY_PASSPHRASE: ${{ secrets.GPG_SECRET_KEY_PASSPHRASE }}
+      - name: Make sure not changed (test case generates code, but should not change it)
+        run: git diff --exit-code
+      - name: Run simple tests
+        run: |
+          echo "Making sure it is usable without any further deps"
+          (cd test/simple ; mvn -B -q -Dexec.args=-; mvn -B dependency:tree)
+          (cd test/jackson; mvn -B -q ; mvn -B dependency:tree)
+      - uses: codecov/codecov-action@v3.1.5
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2.12.0
+        with:
+          check_name: Tests results
+          files: "target/surefire-reports/*.xml"
+
