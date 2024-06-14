@@ -1,21 +1,6 @@
-# Files to be ignored by git
-
-# Ignore Gradle artifacts
-.gradle
-
-# Ignore Eclipse artifacts
-.classpath
-.project
-.settings
-
-# Ignore build artifacts
-bin/
-build
-
-# Cloud Foundry deployment files
-manifest.yml
-
+ 
 # Ignore IntelliJ files
 .idea
 *.iml
 
+target
