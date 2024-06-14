@@ -1,0 +1,140 @@
+= Spring MVC Cache Control
+
+https://maven-badges.herokuapp.com/maven-central/net.rossillo.mvc.cache/spring-mvc-cache-control[image:https://maven-badges.herokuapp.com/maven-central/net.rossillo.mvc.cache/spring-mvc-cache-control/badge.svg[Maven Central]] image:https://circleci.com/gh/foo4u/spring-mvc-cache-control.png?circle-token=2671c269c8ab085fb58617d58167ffe45bc70aac[Build Status]
+
+Spring MVC Cache Control is an extension to http://static.springsource.org/spring/docs/current/spring-framework-reference/html/mvc.html[Spring MVC] that aims to simplify implementing HTTP/1.1 Cache-Control headers for annotated MVC controllers.
+
+== Introduction
+
+This was forked from  foo4u/spring-mvc-cache-control , since that project is not maintained anymore.
+
+In 2024 I revived my fork, and 
+
+- updated spring
+- updated servlet-api
+- dropped gradle (I'm sorry, It didn't work)
+- published it to maven central with new coordinates
+
+== Usage
+
+=== Add Spring MVC Cache Control to Your Project.
+
+==== Maven Projects
+
+----
+<dependency>
+    <groupId>org.meeuw.spring</groupId>
+    <artifactId>spring-mvc-cache-control</artifactId>
+    <version>2.0-SNAPSHOT</version>
+</dependency>
+----
+
+==== Gradle Projects
+
+----
+compile 'org.meeuw.spring:spring-mvc-cache-control:2.0-SNAPSHOT'
+----
+
+=== Configuration
+
+Simply include `net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor` in your Spring MVC configuration.
+
+==== XML Web Application Context
+
+----
+<mvc:interceptors>
+    <bean class="net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor" />
+</mvc:interceptors>
+----
+
+_For XML contexts, this usually defaults to `${appName}-servlet.xml`_
+
+==== Java Web Application Context
+
+----
+@Configuration
+public class WebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer
+{
+    @Override
+    public void addInterceptors(InterceptorRegistry registry)
+    {
+        registry.addInterceptor(new CacheControlHandlerInterceptor());
+    }
+}
+----
+
+=== Annotate Your Controllers
+
+Use the `@CacheControl` annotation on either (or both) type level `@Controller`s or method level `@RequestMapping`s. The handler interceptor will read the annotations and generate HTTP/1.1 compliant cache-control headers. For example:
+
+----
+@Controller
+public final class DemoController {
+
+	/**
+	 * Public home page, cacheable for 5 minutes.
+	 */
+	@CacheControl(maxAge = 300)
+	@RequestMapping({"/", "/home.do"})
+	public String handleHomePageRequest(Model model) {
+		...
+	}
+}
+----
+
+See our https://github.com/foo4u/spring-mvc-cache-control/blob/master/spring-mvc-cache-control-demo/src/main/java/net/rossillo/spring/web/mvc/demo/DemoController.java[spring-mvc-cache-control-demo] project for full details.
+
+== Building from Source
+
+. Clone the repository from GitHub:
+
+----
+$ git clone git://github.com/foo4u/spring-mvc-cache-control
+----
+
+. Navigate into the cloned repository directory:
+
+----
+$ cd spring-mvc-cache-control
+----
+
+. The project uses http://gradle.org/[Gradle] to build:
+
+----
+$ ./gradlew build
+----
+
+== IDE Integration
+
+=== IntelliJ IDEA
+
+IDEA 13+ natively support Gralde projects. Simply choose to import an existing project and select
+the build.gradle file. Tick the checkbox to use the Gradle wrapper.
+
+=== Eclipse
+
+To generate Eclipse metadata (.classpath and .project files), use the following Gradle task:
+
+----
+$ ./gradlew eclipse
+----
+
+Once complete, you may then import the projects into Eclipse as usual:
+
+----
+File -> Import -> Existing projects into workspace
+----
+
+== JavaDoc
+
+Use the following Gradle task to build the JavaDoc
+
+----
+$ ./gradlew javadoc
+----
+
+_Note: The result will be available in 'spring-mvc-cache-control/build/docs/javadoc'._
+
+== Contributing
+
+Contributions are always welcome. Fork the repository, create a topic branch and send a pull request.
