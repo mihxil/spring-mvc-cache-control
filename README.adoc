@@ -93,53 +93,30 @@ See our https://github.com/foo4u/spring-mvc-cache-control/blob/master/spring-mvc
 == Building from Source
 
 . Clone the repository from GitHub:
-
++
 ----
-$ git clone git://github.com/foo4u/spring-mvc-cache-control
+$ git clone git://github.com/mihxil/spring-mvc-cache-control
 ----
 
 . Navigate into the cloned repository directory:
-
++
 ----
 $ cd spring-mvc-cache-control
 ----
 
-. The project uses http://gradle.org/[Gradle] to build:
-
+. The project uses maven to build:
++
 ----
-$ ./gradlew build
+$ mvn
 ----
 
 == IDE Integration
 
 === IntelliJ IDEA
 
-IDEA 13+ natively support Gralde projects. Simply choose to import an existing project and select
-the build.gradle file. Tick the checkbox to use the Gradle wrapper.
+IDEA natively support maven projects. Simply choose to import an existing project and select
+the `pom.xml` file. 
 
-=== Eclipse
-
-To generate Eclipse metadata (.classpath and .project files), use the following Gradle task:
-
-----
-$ ./gradlew eclipse
-----
-
-Once complete, you may then import the projects into Eclipse as usual:
-
-----
-File -> Import -> Existing projects into workspace
-----
-
-== JavaDoc
-
-Use the following Gradle task to build the JavaDoc
-
-----
-$ ./gradlew javadoc
-----
-
-_Note: The result will be available in 'spring-mvc-cache-control/build/docs/javadoc'._
 
 == Contributing
 
