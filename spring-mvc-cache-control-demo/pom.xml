@@ -7,15 +7,26 @@
     <version>2.0-SNAPSHOT</version>
   </parent>
   <artifactId>spring-mvc-cache-control-demo</artifactId>
+  <packaging>war</packaging>
   
-
-  <packaging>jar</packaging>
+  <description>
+    A demo application for the spring-mvc-cache-control library
+  </description>
   
   <dependencies>
     <dependency>
       <groupId>org.meeuw.spring</groupId>
       <artifactId>spring-mvc-cache-control</artifactId>
-      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+       <groupId>jakarta.servlet.jsp.jstl</groupId>
+       <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+       <version>3.0.0</version>
+     </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>3.0.1</version>
     </dependency>
   </dependencies>
 </project>

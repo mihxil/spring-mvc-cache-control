@@ -34,6 +34,10 @@
       </roles>
       <timezone>Europe/Amsterdam</timezone>
     </developer>
+    <developer>
+      <id>foo4u</id>
+      <name>Scott Rossillo</name>
+    </developer>
   </developers>
 
 
@@ -51,6 +55,15 @@
     <tag>HEAD</tag>
   </scm>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.meeuw.spring</groupId>
+        <artifactId>spring-mvc-cache-control</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>

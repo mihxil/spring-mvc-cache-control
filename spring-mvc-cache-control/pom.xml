@@ -10,4 +10,8 @@
   <artifactId>spring-mvc-cache-control</artifactId>
   <packaging>jar</packaging>
   
+  <description>
+    Provides an annotation @CacheControl which can be used to set the Cache-Control header in a Spring MVC controller.
+  </description>
+  
 </project>
