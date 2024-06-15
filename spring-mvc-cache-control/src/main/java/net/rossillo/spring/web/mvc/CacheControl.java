@@ -8,8 +8,8 @@ import java.lang.annotation.Target;
 /**
  * Provides an HTTP 1.1 cache control header annotation for
  * Spring MVC controller methods.
- *
- * See also http://www.mnot.net/cache_docs/
+ * <p>
+ * See also https://www.mnot.net/cache_docs/
  *
  * @author Scott Rossillo
  *

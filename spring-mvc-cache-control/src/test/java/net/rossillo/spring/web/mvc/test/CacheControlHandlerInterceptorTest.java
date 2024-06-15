@@ -1,5 +1,6 @@
-package net.rossillo.spring.web.mvc;
+package net.rossillo.spring.web.mvc.test;
 
+import net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

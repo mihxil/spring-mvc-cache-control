@@ -134,7 +134,8 @@ public class CacheControlHandlerInterceptor  implements HandlerInterceptor {
 	 * @return the <code>CacheControl</code> annotation specified by
 	 * the given <code>handler</code> if present; <code>null</code> otherwise
 	 */
-	protected final CacheControl getCacheControl(
+	//@VisibleForTesting
+	public final CacheControl getCacheControl(
 			final HttpServletRequest request,
 			final HttpServletResponse response,
 			final Object handler) {

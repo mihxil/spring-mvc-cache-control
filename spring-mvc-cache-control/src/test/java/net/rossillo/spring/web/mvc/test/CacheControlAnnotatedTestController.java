@@ -1,5 +1,7 @@
-package net.rossillo.spring.web.mvc;
+package net.rossillo.spring.web.mvc.test;
 
+import net.rossillo.spring.web.mvc.CacheControl;
+import net.rossillo.spring.web.mvc.CachePolicy;
 import org.springframework.stereotype.Controller;
 
 @CacheControl(policy = CachePolicy.PRIVATE)
