@@ -15,11 +15,12 @@ This was forked from  foo4u/spring-mvc-cache-control , since that project is not
 
 In 2024 I revived my fork, and 
 
-- updated spring
-- updated servlet-api
+- updated spring (to 6)
+- updated java (to 17)
+- updated servlet-api (to 6) (`jakarta.servlet`)
 - dropped gradle (I'm sorry, It didn't work)
 - added github actions for the build
-- published it to maven central with new coordinates
+- published it to maven central and sonatype with new coordinates
 
 == Usage
 
