@@ -7,6 +7,7 @@ import java.util.TimeZone;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -138,15 +139,13 @@ public class CacheControlHandlerInterceptor  implements HandlerInterceptor {
 			final HttpServletResponse response,
 			final Object handler) {
 
-		if (handler == null || !(handler instanceof HandlerMethod)) {
+		if (handler == null || !(handler instanceof HandlerMethod handlerMethod)) {
 			return null;
 		}
-
-		final HandlerMethod handlerMethod = (HandlerMethod) handler;
-		CacheControl cacheControl = handlerMethod.getMethodAnnotation(CacheControl.class);
-
+		CacheControl cacheControl = AnnotationUtils.findAnnotation(handlerMethod.getMethod(), CacheControl.class);
+		
 		if (cacheControl == null) {
-			return handlerMethod.getBeanType().getAnnotation(CacheControl.class);
+			return AnnotationUtils.findAnnotation(handlerMethod.getBeanType(), CacheControl.class);
 		}
 
 		return cacheControl;
