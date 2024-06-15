@@ -116,6 +116,9 @@
         <configuration>
           <archive>
             <manifestEntries>
+              <Specification-Title>Spring MVC Cache Control</Specification-Title>
+              <Implementation-Title>${project.name}</Implementation-Title>
+              <Implementation-Version>${project.version}</Implementation-Version>}
               <ProjectVersion>${project.version}</ProjectVersion>
             </manifestEntries>
           </archive>
