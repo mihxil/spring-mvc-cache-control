@@ -1,6 +1,6 @@
 = Spring MVC Cache Control
 
-image:https://github.com/mihxil/spring-mvc-cache-control/actions/workflows/maven.yml/badge.svg[Build Status,link=https://github.com/mihxil/spring-mvc-cache-control/actions?query=workflow%3Amaven] 
+image:https://github.com/mihxil/spring-mvc-cache-control/actions/workflows/maven.yml/badge.svg[Build Status,link=https://github.com/mihxil/spring-mvc-cache-control/actions/workflows/maven.yml] 
 image:https://img.shields.io/maven-central/v/org.meeuw.spring/spring-mvc-cache-control.svg?label=Maven%20Central[Maven Central,link=https://search.maven.org/search?q=g:%22org.meeuw.spring%22%20OR%20g:%22spring-mvc-cache-control%22]
 image:https://codecov.io/gh/mihxil/spring-mvc-cache-control/branch/main/graph/badge.svg?token=EDs91Mcwem[codecov,link=https://codecov.io/gh/mihxil/spring-mvc-cache-control]
 image:https://img.shields.io/nexus/s/https/oss.sonatype.org/org.meeuw.spring/spring-mvc-cache-control.svg[snapshots,link=https://oss.sonatype.org/content/repositories/snapshots/org/meeuw/spring/spring-mvc-cache-control/]
