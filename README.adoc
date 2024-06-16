@@ -22,6 +22,7 @@ In 2024, I revived my fork, because the original maintainer is not maintaining i
 - updated servlet-api (to 6) (`jakarta.servlet`)
 - dropped gradle (I'm sorry, It didn't work)
 - added github actions for the build
+- resolved the outstanding reported issues
 - published it to maven central and sonatype with new coordinates
 
 == Usage
@@ -34,14 +35,14 @@ In 2024, I revived my fork, because the original maintainer is not maintaining i
 <dependency>
     <groupId>org.meeuw.spring</groupId>
     <artifactId>spring-mvc-cache-control</artifactId>
-    <version>2.0-SNAPSHOT</version>
+    <version>2.0</version>
 </dependency>
 ----
 
 ==== Gradle Projects
 
 ----
-compile 'org.meeuw.spring:spring-mvc-cache-control:2.0-SNAPSHOT'
+compile 'org.meeuw.spring:spring-mvc-cache-control:2.0'
 ----
 
 === Configuration
