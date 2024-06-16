@@ -1,5 +1,6 @@
 package net.rossillo.spring.web.mvc.test;
 
+import static java.util.concurrent.TimeUnit.MINUTES;
 import net.rossillo.spring.web.mvc.CacheControl;
 import net.rossillo.spring.web.mvc.CachePolicy;
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 final class CacheControlAnnotatedTestController {
 	
-	@CacheControl(policy = CachePolicy.PUBLIC, maxAge = 60)
+	@CacheControl(policy = CachePolicy.PUBLIC, maxAge = 60, timeunit = MINUTES)
 	public String handlePubliclyCachedPageRequest() {
 		return null;
 	}

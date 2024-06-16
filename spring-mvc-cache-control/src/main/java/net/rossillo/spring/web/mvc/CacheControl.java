@@ -4,6 +4,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Provides an HTTP 1.1 cache control header annotation for
@@ -26,9 +27,14 @@ public @interface CacheControl {
 	CachePolicy[] policy() default { CachePolicy.NO_CACHE };
 
 	/**
-	 *  The maximum amount of time, in seconds, that this content will be considered fresh.
+	 *  The maximum amount of time, in {@link #timeunit()}, that this content will be considered fresh.
 	 */
 	int maxAge() default 0;
+	
+	/**
+	 * The time unit for the {@link #maxAge()}.
+	 */
+	TimeUnit timeunit() default TimeUnit.SECONDS;
 
 	/**
 	 * The maximum amount of time, in seconds, that this content will be considered fresh

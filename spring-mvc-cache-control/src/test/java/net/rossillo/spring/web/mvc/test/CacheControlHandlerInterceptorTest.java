@@ -46,6 +46,7 @@ public final class CacheControlHandlerInterceptorTest {
 		assertNotNull(response.getHeader("Cache-Control"));
 		assertTrue(response.getHeader("Cache-Control").contains("public"));
 		assertFalse(response.getHeader("Cache-Control").contains("private"));
+		assertTrue(response.getHeader("Cache-Control").contains("max-age=3600"));
 	}
 	
 	@Test

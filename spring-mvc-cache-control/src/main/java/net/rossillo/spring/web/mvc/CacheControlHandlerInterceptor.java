@@ -7,6 +7,7 @@ import java.util.TimeZone;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.util.concurrent.TimeUnit;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -81,26 +82,26 @@ public class CacheControlHandlerInterceptor  implements HandlerInterceptor {
 		final CachePolicy[] policies = cacheControl.policy();
 
 		if (cacheControl.maxAge() >= 0) {
-			builder.append("max-age=").append(cacheControl.maxAge());
+			builder.append("max-age=").append(TimeUnit.SECONDS.convert(cacheControl.maxAge(), cacheControl.timeunit()));
 		}
 
 		if (cacheControl.sharedMaxAge() >= 0) {
-			if (builder.length() > 0) {
+			if (!builder.isEmpty()) {
 				builder.append(", ");
 			}
-			builder.append("s-maxage=").append(cacheControl.sharedMaxAge());
+			builder.append("s-maxage=").append(TimeUnit.SECONDS.convert(cacheControl.sharedMaxAge(), cacheControl.timeunit()));
 		}
 
 		if (policies != null) {
 			for (final CachePolicy policy : policies) {
-				if (builder.length() > 0) {
+				if (!builder.isEmpty()) {
 					builder.append(", ");
 				}
 				builder.append(policy.policy());
 			}
 		}
 
-		return (builder.length() > 0 ? builder.toString() : null);
+		return (!builder.isEmpty() ? builder.toString() : null);
 	}
 
 	/**
