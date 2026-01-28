@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.util.concurrent.TimeUnit;
+import org.jspecify.annotations.NonNull;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -155,9 +156,9 @@ public class CacheControlHandlerInterceptor  implements HandlerInterceptor {
 
 	@Override
 	public final boolean preHandle(
-			final HttpServletRequest request,
-			final HttpServletResponse response,
-			final Object handler) throws Exception {
+			final @NonNull HttpServletRequest request,
+			final @NonNull HttpServletResponse response,
+			final @NonNull Object handler) {
 
 		this.assignCacheControlHeader(request, response, handler);
 

@@ -14,7 +14,7 @@ jobs:
     permissions:
       checks: write # to publish test results?
     env:
-      MAVEN_OPTS: -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+      MAVEN_ARGS: '--no-transfer-progress'
     steps:
       - uses: actions/checkout@v6
       - name: Set up JDK 17
@@ -27,7 +27,13 @@ jobs:
           server-username: CENTRAL_USERNAME
           server-password: CENTRAL_PASSWORD
           gpg-private-key: ${{ secrets.GPG_SECRET_KEY }}
-      - name: Build with Maven
+      # When this workflow is triggered by a pull request we only run the tests.
+      - name: Run tests (pull request)
+        if: github.event_name == 'pull_request'
+        run: mvn -B test
+      # For push to main or manual dispatch, run the deploy profile.
+      - name: Build with Maven and deploy
+        if: github.event_name != 'pull_request'
         run: mvn -B -Pdeploy deploy
         env:
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
@@ -41,4 +47,3 @@ jobs:
         with:
           check_name: Tests results
           files: "spring-mvc-cache-control/target/surefire-reports/*.xml"
-
