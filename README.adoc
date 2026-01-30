@@ -29,11 +29,12 @@ In 2024, I revived my fork, because the original maintainer is not maintaining i
 
 ==== Maven Projects
 
+[source, xml]
 ----
 <dependency>
     <groupId>org.meeuw.spring</groupId>
     <artifactId>spring-mvc-cache-control</artifactId>
-    <version>2.0</version>
+    <version>2.1</version>
 </dependency>
 ----
 
@@ -49,6 +50,7 @@ Simply include `net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor` in y
 
 ==== XML Web Application Context
 
+[source, xml]
 ----
 <mvc:interceptors>
     <bean class="net.rossillo.spring.web.mvc.CacheControlHandlerInterceptor" />
@@ -59,6 +61,7 @@ _For XML contexts, this usually defaults to `${appName}-servlet.xml`_
 
 ==== Java Web Application Context
 
+[source,java]
 ----
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfigurer
@@ -75,6 +78,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter implements WebMvcConfi
 
 Use the `@CacheControl` annotation on either (or both) type level `@Controller`s or method level `@RequestMapping`s. The handler interceptor will read the annotations and generate HTTP/1.1 compliant cache-control headers. For example:
 
+[source, java]
 ----
 @Controller
 public final class DemoController {
