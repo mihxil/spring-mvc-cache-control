@@ -49,6 +49,7 @@
     <junit.version>6.0.2</junit.version>
     <java.version>17</java.version>
     <spring.version>7.0.3</spring.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <scm>
     <connection>scm:git:${project.scm.url}.git</connection>
@@ -213,6 +214,7 @@
             <configuration>
               <failOnError>false</failOnError>
               <show>public</show>
+              <additionalOptions>-Xdoclint:none</additionalOptions>
             </configuration>
             <executions>
               <execution>
