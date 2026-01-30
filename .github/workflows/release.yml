@@ -13,13 +13,12 @@ jobs:
       - uses: actions/checkout@v6
       - uses: actions/setup-java@v5
         with:
-          distribution: 'temurin'
           java-version: 17
-          server-id: ossrh
-          server-username: SONATYPE_USERNAME
-          server-password: SONATYPE_PASSWORD
+          distribution: 'temurin'
+          server-id: central
+          server-username: CENTRAL_USERNAME
+          server-password: CENTRAL_PASSWORD
           gpg-private-key: ${{ secrets.GPG_SECRET_KEY }}
-          gpg-passphrase: GPG_SECRET_KEY_PASSPHRASE
           cache: maven
       - name: Configure Git user
         run: |
@@ -28,7 +27,7 @@ jobs:
       - name: Release
         run: mvn -Pdeploy --batch-mode  -Darguments=-DskipTests  release:prepare release:perform
         env:
-          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
-          GPG_SECRET_KEY_PASSPHRASE: ${{ secrets.GPG_SECRET_KEY_PASSPHRASE }}
+          CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
+          CENTRAL_PASSWORD: ${{ secrets.CENTRAL_PASSWORD }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_SECRET_KEY_PASSPHRASE }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

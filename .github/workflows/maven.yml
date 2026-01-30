@@ -43,7 +43,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: Publish Unit Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2.16.1
+        uses: EnricoMi/publish-unit-test-result-action@v2
         with:
           check_name: Tests results
           files: "spring-mvc-cache-control/target/surefire-reports/*.xml"
