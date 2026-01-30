@@ -10,6 +10,7 @@
   <packaging>war</packaging>
   <url>https://github.com/mihxil/spring-mvc-cache-control</url>
 
+  <name>spring MVC Cache control demo</name>
   <description>
     A demo application for the spring-mvc-cache-control library
   </description>
