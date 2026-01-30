@@ -6,8 +6,8 @@
   <artifactId>spring-mvc-cache-control-parent</artifactId>
   <packaging>pom</packaging>
 
-  <version>2.1-SNAPSHOT</version>
-  <name>Spring MVC Cache Control parent</name>
+  <version>2.2-SNAPSHOT</version>
+  <name>Spring MVC Cache Control</name>
   
   <description>Spring MVC Cache Control (parent)</description>
   <url>https://github.com/mihxil/spring-mvc-cache-control</url>
