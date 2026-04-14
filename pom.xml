@@ -46,9 +46,9 @@
 
 
   <properties>
-    <junit.version>6.0.2</junit.version>
+    <junit.version>6.0.3</junit.version>
     <java.version>17</java.version>
-    <spring.version>7.0.4</spring.version>
+    <spring.version>7.0.6</spring.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <scm>
